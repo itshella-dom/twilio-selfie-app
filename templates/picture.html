@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    twilio picture
+  </title>
+  <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="../static/js/bootstrap.js"></script>
+  <script type="text/javascript" src="../static/js/twilio-picture.js"></script>
+  <link href="../static/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../static/css/twilio-picture.css">
+</head>
+<body>
+<div class="panel">
+<h1 class="center">Take a selfie and text it to yourself!</h1>
+  <div class="input-group">
+    <div class="form-group">
+      <label class="control-label" for="twipic-name">Enter the code you received:</label>
+      <input type="text" id='twipic-code' placeholder='Code'>
+    </div>
+  </div>
+  <div id="twipic-takepic" class="form-group">
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="snap" class="btn btn-large btn-primary">Take Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+  </div>
+  
+  <div class="form-group">
+    <button id="twipic-send" class="btn btn-danger btn-large">Send!</button>
+    <input type="hidden" id="twipic-hphone" />
+  </div>
+
+</div>
+<!-- Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" id="closemodal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Twilio Selfie Booth</h4>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+			  <p>Enter your name and phone number. Take a selfie and we'll send it to your phone!</p>
+			<div class="form-group">
+              <label for="twipic-name">Name:</label>
+              <input type="text" id='twipic-name'>
+              <label class="control-label" id="error-name">Enter a valid name</label>
+            </div>
+            <div class="form-group">
+              <label for="twipic-phone">Phone number:</label>
+              <input type="text" id='twipic-phone'>
+              <label class="control-label" id="error-phone">Enter a valid phone number</label>
+            </div>
+            
+            <button type="button" id="twipic-play" class="btn btn-large btn-danger" data-loading-text="waiting for your call...">Next</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+</body>
+</html>
