@@ -4,6 +4,7 @@ import json
 import requests
 import base64
 import re
+import random
 import config
 
 from twilio.rest import TwilioRestClient
@@ -57,6 +58,16 @@ def send_message():
   return '{"success": true}'
 
 
+@app.route('/text',methods=['POST'])
+def text():
+  id = random.randrange(100000, 1000000)
+  print('form: '+str(request.form))
+  ph = request.form.get('phone')
+  codes[ph] = id
+  sms = client.sms.messages.create(body='Enter the following code on the site:'+str(id),
+    to=ph,
+    from_='+19073316809')
+  return jsonify({'phone':ph})
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8000)
