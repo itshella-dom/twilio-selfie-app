@@ -14,6 +14,9 @@ client = TwilioRestClient(config.TWILIO_CREDS['ACCOUNT_SID'], config.TWILIO_CRED
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
+@app.route('/')
+def index():
+  return render_template('picture.html')
 
 
 if __name__ == '__main__':
