@@ -50,10 +50,11 @@ def send_message():
   imgur = imgur.replace('http://0.0.0.0:8000', config.SERVER['NGROK'])
   print(imgur)
 
-  payload = {'To': ph, 'From': '894546', 'MediaUrl': imgur}
-  # verify that the url is supposed to be for end-user or for account owner
-  sms = requests.post('https://api.twilio.com/2010-04-01/Accounts/{}/Messages.json'.format(config.TWILIO_CREDS['ACCOUNT_SID']),
-                      data=payload, auth=(config.TWILIO_CREDS['ACCOUNT_SID'], config.TWILIO_CREDS['AUTH_TOKEN']))
+  client.messages.create(
+      to=ph, 
+      from_='894546', 
+      media_url=imgur
+  )
 
   return '{"success": true}'
 
